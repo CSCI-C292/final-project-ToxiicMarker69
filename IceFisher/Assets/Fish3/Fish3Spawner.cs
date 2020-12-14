@@ -18,7 +18,7 @@ public class Fish3Spawner : MonoBehaviour
         _xSpawn = Camera.main.ViewportToWorldPoint(new Vector3(1.5f, 0,0)).x;
 
 
-        InvokeRepeating("SpawnEnemy", 0, 20f);
+        InvokeRepeating("SpawnEnemy", 0, 18f);
     }
 
     // Update is called once per frame
@@ -28,6 +28,6 @@ public class Fish3Spawner : MonoBehaviour
     }
     void SpawnEnemy() {
         float randY = Random.Range( _yMin, _yMax);
-        Instantiate(_enemyPrefab, new Vector3(_xSpawn,randY, 0) , Quaternion.identity, this.transform);
+        Instantiate(_enemyPrefab, new Vector3(_xSpawn,randY, -.5f) , Quaternion.identity);
     }
 }

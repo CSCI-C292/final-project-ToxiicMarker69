@@ -28,6 +28,6 @@ public class Fish2Spawner : MonoBehaviour
     }
     void SpawnEnemy() {
         float randY = Random.Range( _yMin, _yMax);
-        Instantiate(_enemyPrefab, new Vector3(_xSpawn,randY, 0) , Quaternion.identity, this.transform);
+        Instantiate(_enemyPrefab, new Vector3(_xSpawn,randY, -.5f) , Quaternion.identity);
     }
 }

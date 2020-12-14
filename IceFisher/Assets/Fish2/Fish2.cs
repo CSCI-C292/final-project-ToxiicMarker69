@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Fish2 : MonoBehaviour
 {
+    GameObject playerObject;
+    GameObject Hook;
     [SerializeField] float _speed = 3f;
     // Start is called before the first frame update
     //static int _enemyCount = 0;
     void Start()
     {
-        
+        this.playerObject = GameObject.Find("Fish2");
+        Hook = GameObject.Find("Hook");  
     }
 
     // Update is called once per frame
@@ -21,10 +24,27 @@ public class Fish2 : MonoBehaviour
         }
     
     }
-    // void OnTriggerEnter2D(Collider2D collider) {
-    //     GameState.Instance.IncreaseScore(15);
-    //     Destroy(this);
-        
-    // }
+    
+    void Attachfish2()
+    {
+        this.transform.parent = Hook.transform;
+        _speed = 0;
+        Debug.Log("Attached " + gameObject.name);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("Collision Detected");
+        if (collider.gameObject.name == "Hook")
+        {
+            Debug.Log("Attaching Fish");
+            if (Hook.GetComponent<HookMovement>().Attached == false)
+            {
+                Attachfish2();
+                Hook.GetComponent<HookMovement>().Attached = true;
+            }
+
+        }
+    }
     
 }
